@@ -60,7 +60,7 @@ def obtener_votos_pelicula(titulo:str):
        
 @app.get("/actor/{actor}")        
 def obtener_informacion_actor(actor):
-    df= pd.read_csv("F:\HENRY\DATA SCIENCE\PI\PI 1\movies_credits.csv")
+    df= pd.read_csv("movies_credits.csv")
     actor = actor.lower()
     peliculas_participadas = df[df['names_cast'].str.lower().str.contains(actor, na=False)]
     cantidad_peliculas = len(peliculas_participadas)
@@ -75,7 +75,7 @@ def obtener_informacion_actor(actor):
 
 @app.get("/director/{director}")
 def get_director(nombre_director):
-    df = pd.read_csv("F:\HENRY\DATA SCIENCE\PI\PI 1\movies_credits.csv")
+    df = pd.read_csv("movies_credits.csv")
     nombre_director = nombre_director.lower()
     director_movies = df[df['name_crew'].str.lower().str.contains(nombre_director, na=False)]
     cantidad_peliculas = len(director_movies)
@@ -116,7 +116,7 @@ class RecommendationRequest(BaseModel):
     pelicula: str
 
 # Cargar los datos de películas desde el DataFrame
-movies_data = pd.read_csv(r"F:\HENRY\DATA SCIENCE\PI\PI 1\movies_credits.csv")
+movies_data = pd.read_csv(r"movies_credits.csv")
 
 # Preprocesamiento de los títulos de las películas para la nube de palabras
 def preprocess_titles(text):
